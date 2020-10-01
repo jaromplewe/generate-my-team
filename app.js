@@ -4,12 +4,14 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+const Employee = require("./lib/Employee");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 console.log('hello');
+
 
 
 // Write code to use inquirer to gather information about the development team members,
@@ -23,7 +25,7 @@ inquirer
         },
         {
             type: "list",
-            name: "job-title",
+            name: "role",
             choices: [
                 "Employee",
                 "Manager",
@@ -33,7 +35,7 @@ inquirer
         },
         {
             type: "input",
-            name: "id-number",
+            name: "id",
             message: "Employee ID"
         },
         {
@@ -41,9 +43,21 @@ inquirer
             name: "email",
             message: "Employee Email:"
         },
+        {
+            type: "input",
+            name: "github",
+            message: "Employee Github:"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "Employee School:"
+        }
     ])
     .then(response => {
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response.jobTitle));
+        let employee = new Employee(response);
+        render(employee);
     })
     .catch(err => {
         if(err) {
