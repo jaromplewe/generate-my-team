@@ -12,7 +12,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 console.log('hello');
 
-
+let employeeArr = [];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -55,9 +55,18 @@ inquirer
         }
     ])
     .then(response => {
-        // console.log(JSON.stringify(response.jobTitle));
-        let employee = new Employee(response);
-        render(employee);
+        let employee;
+        if(response.role === "Manager") {
+            employee = new Manager(response);
+        } else if (response.role === "Engineer") {
+            employee = new Engineer(response);
+        } else if (response.role === "Intern") {
+            employee = new Intern(response);
+        } else {
+            employee = new Employee(response);  
+        }
+        employeeArr.push(employee);
+        render(employeeArr);
     })
     .catch(err => {
         if(err) {
