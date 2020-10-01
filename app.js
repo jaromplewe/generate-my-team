@@ -14,6 +14,42 @@ console.log('hello');
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+inquirer
+    .prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Employee Name:"
+        },
+        {
+            type: "list",
+            name: "job-title",
+            choices: [
+                "Employee",
+                "Manager",
+                "Engineer",
+                "Intern",
+            ]
+        },
+        {
+            type: "input",
+            name: "id-number",
+            message: "Employee ID"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "Employee Email:"
+        },
+    ])
+    .then(response => {
+        console.log(JSON.stringify(response));
+    })
+    .catch(err => {
+        if(err) {
+            console.log(err);
+        }
+    });
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
