@@ -74,13 +74,13 @@ let runPrompts = () => {
         .then(response => {
             let employee;
             if (response.role === "Manager") {
-                employee = new Manager(response);
+                employee = new Manager(response.name, response.role, response.id, response.email, response.officeNumber);
             } else if (response.role === "Engineer") {
-                employee = new Engineer(response);
+                employee = new Engineer(response.name, response.role, response.id, response.email, response.github);
             } else if (response.role === "Intern") {
-                employee = new Intern(response);
+                employee = new Intern(response.name, response.role, response.id, response.email, response.school);
             }
-            
+
             employeeArr.push(employee);
 
             if (response.yesNo === "Yes") {
