@@ -8,11 +8,13 @@ const Employee = require("./lib/Employee");
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+console.log(outputPath)
 
 const render = require("./lib/htmlRenderer");
 console.log('hello');
 
 let employeeArr = [];
+let finalHtml;
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -52,24 +54,30 @@ inquirer
             type: "input",
             name: "school",
             message: "Employee School:"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "Office Number:"
         }
     ])
     .then(response => {
         let employee;
-        if(response.role === "Manager") {
+        if (response.role === "Manager") {
             employee = new Manager(response);
         } else if (response.role === "Engineer") {
             employee = new Engineer(response);
         } else if (response.role === "Intern") {
             employee = new Intern(response);
         } else {
-            employee = new Employee(response);  
+            employee = new Employee(response);
         }
         employeeArr.push(employee);
-        render(employeeArr);
+        finalHtml = render(employeeArr);
+        writeHTML(finalHtml);
     })
     .catch(err => {
-        if(err) {
+        if (err) {
             console.log(err);
         }
     });
@@ -83,6 +91,12 @@ inquirer
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
+function writeHTML(finalHtml) {
+    fs.writeFile(outputPath, finalHtml, (err) => {
+        if (err) throw err;
+        console.log('butthole')
+    });
+};
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
