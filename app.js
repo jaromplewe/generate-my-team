@@ -29,7 +29,6 @@ inquirer
             type: "list",
             name: "role",
             choices: [
-                "Employee",
                 "Manager",
                 "Engineer",
                 "Intern",
@@ -69,8 +68,6 @@ inquirer
             employee = new Engineer(response);
         } else if (response.role === "Intern") {
             employee = new Intern(response);
-        } else if (response.role === "Employee") {
-            employee = new Employee(response);
         }
         employeeArr.push(employee);
         finalHtml = render(employeeArr);
@@ -81,9 +78,6 @@ inquirer
             console.log(err);
         }
     });
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
 
 // After you have your html, you're now ready to create an HTML file using the HTML
