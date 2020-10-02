@@ -80,7 +80,9 @@ let runPrompts = () => {
             } else if (response.role === "Intern") {
                 employee = new Intern(response);
             }
+            
             employeeArr.push(employee);
+
             if (response.yesNo === "Yes") {
                 runPrompts();
             } else if (response.yesNo === "No") {

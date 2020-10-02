@@ -8,6 +8,7 @@ body {
     text-align: center;
     vertical-align: middle;
     display: table-cell;
+    margin: 15px;
 
     /* styles */
     background-color: black;
