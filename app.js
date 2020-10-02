@@ -69,7 +69,7 @@ inquirer
             employee = new Engineer(response);
         } else if (response.role === "Intern") {
             employee = new Intern(response);
-        } else {
+        } else if (response.role === "Employee") {
             employee = new Employee(response);
         }
         employeeArr.push(employee);
@@ -94,7 +94,7 @@ inquirer
 function writeHTML(finalHtml) {
     fs.writeFile(outputPath, finalHtml, (err) => {
         if (err) throw err;
-        console.log('butthole')
+        console.log('Successfully written!');
     });
 };
 

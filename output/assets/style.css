@@ -1,0 +1,66 @@
+body {
+    padding: 50px;
+}
+
+.dark-card-wrap {
+    /* alignment */
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+
+    /* styles */
+    background-color: black;
+    border: solid rgb(48, 48, 48) 2px;
+    border-radius: 2.5px;
+    width: 225px;
+    height: 325px;
+    /* box-shadow: 0 15px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    transition: ease 0.5s;
+}
+
+.dark-card:hover {
+    margin-top: -20px;
+    box-shadow: 0.5px 0.5px 9px #858585;
+}
+
+.dark-card {
+    /* alignment */
+    display: inline-block;
+    margin: 5px;
+    
+    /* styles */
+    border-radius: 2.5px;
+    background-image: linear-gradient(to right, rgb(59, 59, 59) 50%, rgb(51, 51, 51) 40%);
+    height: 300px;
+    width: 200px;
+    transition: ease 0.4s;
+}
+
+.dark-card-header h2, h4, .dark-card-content p {
+    text-align: center;
+    color: rgb(245, 245, 245);
+}
+
+.seperator {
+    border-bottom: solid rgb(245, 245, 245) 1px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.identity {
+    height: 35px;
+    width: 50%;
+    line-height: 35px;
+    margin: auto;
+    margin-bottom: 18px;
+    background-color: rgb(38, 124, 253);
+    border-radius: 17.5px;
+}
+
+a {
+    color: rgb(193, 218, 255);
+}
+a:hover {
+    color: rgb(38, 124, 253);
+}
