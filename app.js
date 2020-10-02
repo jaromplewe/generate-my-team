@@ -18,66 +18,83 @@ let finalHtml;
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer
-    .prompt([
-        {
-            type: "input",
-            name: "name",
-            message: "Employee Name:"
-        },
-        {
-            type: "list",
-            name: "role",
-            choices: [
-                "Manager",
-                "Engineer",
-                "Intern",
-            ]
-        },
-        {
-            type: "input",
-            name: "id",
-            message: "Employee ID"
-        },
-        {
-            type: "input",
-            name: "email",
-            message: "Employee Email:"
-        },
-        {
-            type: "input",
-            name: "github",
-            message: "Employee Github:"
-        },
-        {
-            type: "input",
-            name: "school",
-            message: "Employee School:"
-        },
-        {
-            type: "input",
-            name: "officeNumber",
-            message: "Office Number:"
-        }
-    ])
-    .then(response => {
-        let employee;
-        if (response.role === "Manager") {
-            employee = new Manager(response);
-        } else if (response.role === "Engineer") {
-            employee = new Engineer(response);
-        } else if (response.role === "Intern") {
-            employee = new Intern(response);
-        }
-        employeeArr.push(employee);
-        finalHtml = render(employeeArr);
-        writeHTML(finalHtml);
-    })
-    .catch(err => {
-        if (err) {
-            console.log(err);
-        }
-    });
+let runPrompts = () => {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "Employee Name:"
+            },
+            {
+                type: "list",
+                name: "role",
+                message: "What is your role?",
+                choices: [
+                    "Manager",
+                    "Engineer",
+                    "Intern",
+                ]
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "Employee ID"
+            },
+            {
+                type: "input",
+                name: "email",
+                message: "Employee Email:"
+            },
+            {
+                type: "input",
+                name: "github",
+                message: "Employee Github:"
+            },
+            {
+                type: "input",
+                name: "school",
+                message: "Employee School:"
+            },
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "Office Number:"
+            },
+            {
+                type: "list",
+                name: "yesNo",
+                message: "Add another team member?",
+                choices: [
+                    "Yes",
+                    "No"
+                ]
+            }
+        ])
+        .then(response => {
+            let employee;
+            if (response.role === "Manager") {
+                employee = new Manager(response);
+            } else if (response.role === "Engineer") {
+                employee = new Engineer(response);
+            } else if (response.role === "Intern") {
+                employee = new Intern(response);
+            }
+            employeeArr.push(employee);
+            if (response.yesNo === "Yes") {
+                runPrompts();
+            } else if (response.yesNo === "No") {
+                finalHtml = render(employeeArr);
+                writeHTML(finalHtml);
+            }
+        })
+        .catch(err => {
+            if (err) {
+                console.log(err);
+            }
+        });
+}
+runPrompts();
 // generate and return a block of HTML including templated divs for each employee!
 
 // After you have your html, you're now ready to create an HTML file using the HTML
