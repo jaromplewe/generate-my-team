@@ -1,5 +1,7 @@
-body {
-    padding: 50px;
+.jumbotron {
+    background-color: rgb(59, 59, 59);
+    color: rgb(245, 245, 245);
+    border-radius: 0;
 }
 
 .dark-card-wrap {
