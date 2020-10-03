@@ -31,7 +31,7 @@ let runPrompts = () => {
                 name: "role",
                 message: "What is your role?",
                 choices: [
-                    "Manager",
+                    "Manager",                 
                     "Engineer",
                     "Intern",
                 ]
@@ -49,17 +49,20 @@ let runPrompts = () => {
             {
                 type: "input",
                 name: "github",
-                message: "Employee Github:"
+                message: "Employee Github:",
+                when: (response) => response.role === "Engineer"
             },
             {
                 type: "input",
                 name: "school",
-                message: "Employee School:"
+                message: "Employee School:",
+                when: (response) => response.role === "Intern"
             },
             {
                 type: "input",
                 name: "officeNumber",
-                message: "Office Number:"
+                message: "Office Number:",
+                when: (response) => response.role === "Manager"
             },
             {
                 type: "list",
@@ -97,13 +100,7 @@ let runPrompts = () => {
         });
 }
 runPrompts();
-// generate and return a block of HTML including templated divs for each employee!
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
 function writeHTML(finalHtml) {
     fs.writeFile(outputPath, finalHtml, (err) => {
         if (err) throw err;
