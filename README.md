@@ -1,6 +1,6 @@
 # Generate My Team
 
-  __[https://github.com/jaromplewe/generate-my-team](https://github.com/jaromplewe/generate-my-team)__
+  Video of application: __[https://drive.google.com/file/d/12z__PZCHE0EeMChzOGpWHq0M0MIhPpf1/view](https://drive.google.com/file/d/12z__PZCHE0EeMChzOGpWHq0M0MIhPpf1/view)__
     
   ## Description
   
